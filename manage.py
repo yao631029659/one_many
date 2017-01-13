@@ -1,7 +1,7 @@
 from flask.ext.script import Manager, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from main import app, db, User, Post, Tag
+from main import app, db, User, Post
 
 migrate = Migrate(app, db)
 
@@ -12,7 +12,7 @@ manager.add_command('db', MigrateCommand)
 
 @manager.shell
 def make_shell_context():
-    return dict(app=app, db=db, User=User, Post=Post, Tag=Tag)
+    return dict(app=app, db=db, User=User, Post=Post)
 
 if __name__ == "__main__":
     manager.run()
